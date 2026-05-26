@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Libre_Baskerville, DM_Sans, Fragment_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { withBasePath } from "@/lib/site-path";
 
 const libreBaskerville = Libre_Baskerville({
   variable: "--font-libre-baskerville",
@@ -31,8 +32,8 @@ export const metadata: Metadata = {
   description:
     "Product & visual designer startups can count on. Pixel-perfect clone of the Artemis portfolio template.",
   icons: {
-    icon: "/seo/favicon.png",
-    apple: "/seo/apple-touch-icon.png",
+    icon: withBasePath("/seo/favicon.png"),
+    apple: withBasePath("/seo/apple-touch-icon.png"),
   },
 };
 

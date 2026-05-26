@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { withBasePath } from "@/lib/site-path";
 
 const POLAROIDS = [
   {
@@ -21,7 +22,7 @@ export function BehindTheCanvas() {
   return (
     <section className="mx-auto w-full max-w-[1273px] px-6 py-24">
       <div className="mx-auto max-w-[720px] text-center">
-        <p className="eyebrow mb-4">// About</p>
+        <p className="eyebrow mb-4">{"// About"}</p>
         <h2 className="font-serif text-[clamp(36px,5vw,64px)] tracking-[-2px] text-[var(--text-heading)]">
           Behind the <span className="italic">canvas</span>
         </h2>
@@ -96,7 +97,7 @@ function Polaroid({
     >
       <div className="relative aspect-[4/5] w-full overflow-hidden">
         <Image
-          src={src}
+          src={withBasePath(src)}
           alt={caption}
           fill
           sizes="280px"

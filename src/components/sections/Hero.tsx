@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
+import { withBasePath } from "@/lib/site-path";
 
 const TAGLINE = "startups can count on!";
 const ARC_TEXT = "✦ This is Artemis  ✦ This is Artemis  ✦ This is Artemis  ";
@@ -114,7 +115,7 @@ function FloatingPhoto({
       style={{ ["--rot" as never]: `${rot}deg` }}
     >
       <Image
-        src={src}
+        src={withBasePath(src)}
         alt={alt}
         fill
         sizes="(min-width: 768px) 220px, 50vw"

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { withBasePath } from "@/lib/site-path";
 
 const SNEAK_ITEMS = [
   {
@@ -92,7 +93,7 @@ export function SneakPeekMarquee() {
             >
               {it.video ? (
                 <video
-                  src={it.src}
+                  src={withBasePath(it.src)}
                   autoPlay
                   muted
                   loop
@@ -101,7 +102,7 @@ export function SneakPeekMarquee() {
                 />
               ) : (
                 <Image
-                  src={it.src}
+                  src={withBasePath(it.src)}
                   alt={it.alt || ""}
                   fill
                   sizes="280px"

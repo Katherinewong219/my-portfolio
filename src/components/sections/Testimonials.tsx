@@ -25,7 +25,7 @@ export function Testimonials() {
   return (
     <section className="mx-auto w-full max-w-[1273px] px-6 py-24">
       <div className="mx-auto max-w-[720px] text-center">
-        <p className="eyebrow mb-4">// Testimonials</p>
+        <p className="eyebrow mb-4">{"// Testimonials"}</p>
         <h2 className="font-serif text-[clamp(36px,5vw,64px)] tracking-[-2px] text-[var(--text-heading)]">
           Kind words from <span className="italic">Clients</span>
         </h2>

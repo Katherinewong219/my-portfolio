@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/icons";
+import { withBasePath } from "@/lib/site-path";
 
 const WORKS = [
   {
@@ -61,7 +62,7 @@ export function WorksGrid() {
               style={{ backgroundColor: w.bg }}
             >
               <Image
-                src={w.img}
+                src={withBasePath(w.img)}
                 alt={w.alt}
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"

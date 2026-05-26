@@ -32,7 +32,7 @@ export function FAQs() {
   return (
     <section className="mx-auto w-full max-w-[820px] px-6 py-24">
       <div className="mx-auto max-w-[720px] text-center">
-        <p className="eyebrow mb-4">// FAQs</p>
+        <p className="eyebrow mb-4">{"// FAQs"}</p>
         <h2 className="font-serif text-[clamp(36px,5vw,64px)] tracking-[-2px] text-[var(--text-heading)]">
           Got questions? I&apos;ve got <span className="italic">answers.</span>
         </h2>
