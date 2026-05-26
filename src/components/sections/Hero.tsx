@@ -1,0 +1,125 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "motion/react";
+
+const TAGLINE = "startups can count on!";
+const ARC_TEXT = "✦ This is Artemis  ✦ This is Artemis  ✦ This is Artemis  ";
+
+export function Hero() {
+  return (
+    <section className="relative mx-auto flex w-full min-h-[640px] max-w-[1273px] flex-col items-center justify-center overflow-hidden px-6 pt-[60px] pb-[60px] text-center md:min-h-[820px]">
+      {/* Decorative arc text — slowly rotating SVG */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 hidden h-[623px] w-[623px] -translate-x-1/2 -translate-y-[55%] md:block"
+        aria-hidden
+      >
+        <svg
+          viewBox="0 0 623 623"
+          className="h-full w-full animate-spin-slow opacity-70"
+          style={{ animationDuration: "60s" }}
+        >
+          <defs>
+            <path
+              id="arc"
+              d="M 311.5,311.5 m -270,0 a 270,270 0 1,1 540,0 a 270,270 0 1,1 -540,0"
+            />
+          </defs>
+          <text
+            fill="var(--text-strong)"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "16px",
+              letterSpacing: "0.18em",
+            }}
+          >
+            <textPath href="#arc">{ARC_TEXT.repeat(2)}</textPath>
+          </text>
+        </svg>
+      </div>
+
+      {/* Floating photo cards */}
+      <FloatingPhoto
+        src="/images/hero-1.jpg"
+        alt=""
+        className="absolute left-[6%] top-[12%] hidden h-[252px] w-[198px] md:block"
+        rot={-6}
+      />
+      <FloatingPhoto
+        src="/images/hero-2.png"
+        alt=""
+        className="absolute right-[8%] top-[6%] hidden h-[216px] w-[160px] md:block"
+        rot={5}
+      />
+      <FloatingPhoto
+        src="/images/hero-3.jpg"
+        alt=""
+        className="absolute bottom-[10%] left-[10%] hidden h-[130px] w-[183px] md:block"
+        rot={4}
+      />
+      <FloatingPhoto
+        src="/images/hero-4.jpg"
+        alt=""
+        className="absolute bottom-[14%] right-[12%] hidden h-[101px] w-[142px] md:block"
+        rot={-5}
+      />
+
+      <motion.h1
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 max-w-[820px] font-serif text-[clamp(40px,7vw,80px)] leading-[1.1] tracking-[-2px] text-[var(--text-heading)]"
+      >
+        Product &amp; Visual <span className="italic">Designer</span>
+      </motion.h1>
+
+      <div className="relative z-10 mt-6 flex h-[26px] items-center overflow-hidden">
+        {TAGLINE.split("").map((ch, i) => (
+          <motion.span
+            key={i}
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.4 + i * 0.025,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="font-mono text-[15px] text-[var(--text-strong)] whitespace-pre"
+          >
+            {ch}
+          </motion.span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FloatingPhoto({
+  src,
+  alt,
+  className,
+  rot,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  rot: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, rotate: rot }}
+      animate={{ opacity: 1, scale: 1, rotate: rot }}
+      transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      className={`overflow-hidden rounded-[8px] shadow-[0_10px_30px_rgba(0,0,0,0.08)] ${className}`}
+      style={{ ["--rot" as never]: `${rot}deg` }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(min-width: 768px) 220px, 50vw"
+        className="object-cover"
+      />
+    </motion.div>
+  );
+}
