@@ -12,10 +12,10 @@ const ARC_END_PADDING = 4;
 
 export function Hero() {
   return (
-    <section className="relative mx-auto flex w-full min-h-[calc(100svh-80px)] max-w-[1273px] flex-col items-center justify-center overflow-hidden px-6 py-6 text-center">
+    <section className="relative mx-auto flex h-[420px] w-full max-w-[1273px] flex-col items-center justify-center overflow-hidden px-6 py-10 text-center md:h-[720px] md:py-6">
       {/* Decorative arc text — slowly rotating SVG */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 hidden h-[623px] w-[623px] -translate-x-1/2 -translate-y-1/2 md:block"
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[min(86vw,360px)] w-[min(86vw,360px)] -translate-x-1/2 -translate-y-1/2 md:h-[623px] md:w-[623px]"
         aria-hidden
       >
         <svg
@@ -53,25 +53,25 @@ export function Hero() {
       <FloatingPhoto
         src="/images/hero-1.jpg"
         alt=""
-        className="absolute left-[6%] top-[12%] hidden h-[252px] w-[198px] md:block"
+        className="absolute left-[5%] top-[9%] h-[118px] w-[92px] md:left-[6%] md:top-[12%] md:h-[252px] md:w-[198px]"
         rot={-6}
       />
       <FloatingPhoto
         src="/images/hero-2.png"
         alt=""
-        className="absolute right-[8%] top-[6%] hidden h-[216px] w-[160px] md:block"
+        className="absolute right-[5%] top-[7%] h-[98px] w-[72px] md:right-[8%] md:top-[6%] md:h-[216px] md:w-[160px]"
         rot={5}
       />
       <FloatingPhoto
         src="/images/hero-3.jpg"
         alt=""
-        className="absolute bottom-[10%] left-[10%] hidden h-[130px] w-[183px] md:block"
+        className="absolute bottom-[10%] left-[7%] h-[64px] w-[90px] md:bottom-[10%] md:left-[10%] md:h-[130px] md:w-[183px]"
         rot={4}
       />
       <FloatingPhoto
         src="/images/hero-4.jpg"
         alt=""
-        className="absolute bottom-[14%] right-[12%] hidden h-[101px] w-[142px] md:block"
+        className="absolute bottom-[14%] right-[8%] h-[54px] w-[76px] md:bottom-[14%] md:right-[12%] md:h-[101px] md:w-[142px]"
         rot={-5}
       />
 

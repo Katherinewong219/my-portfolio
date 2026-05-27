@@ -42,11 +42,12 @@ export function WorksGrid() {
   return (
     <section className="mx-auto w-full max-w-[1273px] px-6 py-24">
       <div className="mx-auto max-w-[720px] text-center">
+        <p className="eyebrow mb-4">{"// Projects"}</p>
         <h2 className="font-serif text-[clamp(40px,5vw,64px)] leading-[1.2] tracking-[-2px] text-[var(--text-heading)]">
           Design in <span className="italic">action</span>
         </h2>
         <p className="mt-4 text-[18px] leading-[1.5] text-[var(--text-body)]">
-          Crafting functional, stunning products with founders.
+          Crafting functional, stunning products that solve real problems.
         </p>
       </div>
 
@@ -83,12 +84,6 @@ export function WorksGrid() {
             </div>
           </Link>
         ))}
-      </div>
-
-      <div className="mt-14 flex justify-center">
-        <button className="rounded-full bg-[var(--accent)] px-6 py-3 text-[15px] font-medium text-black transition-transform hover:scale-[1.03]">
-          Load More
-        </button>
       </div>
     </section>
   );

@@ -1,37 +1,33 @@
-import {
-  ComputerIcon,
-  HeartIcon,
-  StarIcon,
-  TelescopeIcon,
-} from "@/components/icons";
+import { BrainCircuitIcon, GoalIcon, RocketIcon } from "lucide-react";
+import { TelescopeIcon } from "@/components/icons";
 
 const CARDS = [
   {
     eyebrow: "01",
     title: "Strategic Design",
-    desc: "Every design decision ties back to your business goals — from improving activation rates to closing your next funding round.",
+    desc: "Every design decision connects to business goals, supporting activation, growth, and readiness for the next stage of funding.",
     Icon: TelescopeIcon,
     accent: "var(--accent)",
   },
   {
     eyebrow: "02",
     title: "Startup Speed",
-    desc: "I move at startup pace. Fast iterations, clear deliverables, and no endless rounds of revisions slowing you down.",
-    Icon: ComputerIcon,
+    desc: "I move at startup speed. Fast iterations, clear deliverables, and a process that keeps work moving forward quickly.",
+    Icon: RocketIcon,
     accent: "var(--text-heading)",
   },
   {
     eyebrow: "03",
     title: "End-to-End Craft",
-    desc: "From brand and UX to high-fidelity UI and pitch decks — one designer who can take the project from zero to launch.",
-    Icon: StarIcon,
+    desc: "From brand and UX to high-fidelity UI and pitch decks, projects are taken from zero through to launch.",
+    Icon: GoalIcon,
     accent: "var(--accent)",
   },
   {
     eyebrow: "04",
-    title: "Founder Empathy",
-    desc: "I work alongside founders, not just for them. Your priorities, constraints, and ambitions shape every pixel.",
-    Icon: HeartIcon,
+    title: "AI in Design",
+    desc: "I integrate AI into the design process to accelerate ideation, support rapid testing, and validate user flows before development.",
+    Icon: BrainCircuitIcon,
     accent: "var(--text-heading)",
   },
 ];
@@ -40,13 +36,12 @@ export function WhatIBring() {
   return (
     <section className="mx-auto w-full max-w-[1273px] px-6 py-24">
       <div className="mx-auto max-w-[720px] text-center">
-        <p className="eyebrow mb-4">{"// What I bring"}</p>
+        <p className="eyebrow mb-4">{"// Values"}</p>
         <h2 className="font-serif text-[clamp(36px,5vw,64px)] tracking-[-2px] text-[var(--text-heading)]">
           What I bring to the <span className="italic">table</span>
         </h2>
         <p className="mt-4 text-[17px] leading-[1.5] text-[var(--text-body)]">
-          Digital experiences that engage users and help your startup stand out
-          from day one.
+          Digital experiences that engage users and drive real product impact.
         </p>
       </div>
 
