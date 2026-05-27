@@ -4,15 +4,18 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { withBasePath } from "@/lib/site-path";
 
-const TAGLINE = "startups can count on!";
-const ARC_TEXT = "✦ This is Artemis  ✦ This is Artemis  ✦ This is Artemis  ";
+const TAGLINE = "Welcome to my design world!";
+const ARC_TEXT =
+  "✦ User Experience ✦ User Interface ✦ Innovative Design Solutions ✦ Seamless Interactions ✦ Creative Problem-Solving ✦ Prototyping";
+const ARC_PATH_LENGTH = Math.round(2 * Math.PI * 270);
+const ARC_END_PADDING = 4;
 
 export function Hero() {
   return (
-    <section className="relative mx-auto flex w-full min-h-[640px] max-w-[1273px] flex-col items-center justify-center overflow-hidden px-6 pt-[60px] pb-[60px] text-center md:min-h-[820px]">
+    <section className="relative mx-auto flex w-full min-h-[calc(100svh-80px)] max-w-[1273px] flex-col items-center justify-center overflow-hidden px-6 py-6 text-center">
       {/* Decorative arc text — slowly rotating SVG */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 hidden h-[623px] w-[623px] -translate-x-1/2 -translate-y-[55%] md:block"
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 hidden h-[623px] w-[623px] -translate-x-1/2 -translate-y-1/2 md:block"
         aria-hidden
       >
         <svg
@@ -34,7 +37,14 @@ export function Hero() {
               letterSpacing: "0.18em",
             }}
           >
-            <textPath href="#arc">{ARC_TEXT.repeat(2)}</textPath>
+            <textPath
+              href="#arc"
+              startOffset="0"
+              textLength={ARC_PATH_LENGTH - ARC_END_PADDING}
+              lengthAdjust="spacing"
+            >
+              {ARC_TEXT}
+            </textPath>
           </text>
         </svg>
       </div>
@@ -69,9 +79,9 @@ export function Hero() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 max-w-[820px] font-serif text-[clamp(40px,7vw,80px)] leading-[1.1] tracking-[-2px] text-[var(--text-heading)]"
+        className="relative z-10 max-w-[820px] text-center font-serif text-[clamp(40px,7vw,80px)] leading-[1.1] tracking-[-2px] text-[var(--text-heading)]"
       >
-        Product &amp; Visual <span className="italic">Designer</span>
+        Product <span className="block italic">Designer</span>
       </motion.h1>
 
       <div className="relative z-10 mt-6 flex h-[26px] items-center overflow-hidden">
