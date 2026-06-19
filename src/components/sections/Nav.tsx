@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export function Nav() {
@@ -17,6 +16,12 @@ export function Nav() {
   function scrollToSection(id: string) {
     clearUrlHash();
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    window.requestAnimationFrame(clearUrlHash);
+  }
+
+  function scrollToTop() {
+    clearUrlHash();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     window.requestAnimationFrame(clearUrlHash);
   }
 
@@ -46,12 +51,13 @@ export function Nav() {
         >
           Work
         </button>
-        <Link
-          href="/"
+        <button
+          type="button"
+          onClick={scrollToTop}
           className="justify-self-center font-serif text-[22px] leading-none tracking-[-1.12px] text-[var(--accent)] sm:text-[28px]"
         >
           Katherine<span className="italic">Wong</span>
-        </Link>
+        </button>
         <button
           type="button"
           onClick={() => scrollToSection("about")}

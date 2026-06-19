@@ -6,17 +6,19 @@ import { withBasePath } from "@/lib/site-path";
 
 const POLAROIDS = [
   {
-    src: "/images/about-cat.jpg",
+    src: "/images/about-charlie.png",
     caption: "A cat person",
     rot: -6,
+    layer: 20,
     top: "2%",
     left: "0%",
   },
   {
-    src: "/images/about-hiking.jpg",
-    caption: "Enjoy hiking",
+    src: "/images/about-food.jpeg",
+    caption: "Food & Travel",
     rot: 4,
-    top: "42%",
+    layer: 10,
+    top: "30%",
     left: "54%",
   },
 ];
@@ -25,7 +27,10 @@ export function BehindTheCanvas() {
   const [activePolaroid, setActivePolaroid] = useState("portrait");
 
   return (
-    <section id="about" className="mx-auto w-full max-w-[1273px] scroll-mt-[104px] px-6 py-24">
+    <section
+      id="about"
+      className="mx-auto w-full max-w-[1273px] scroll-mt-[104px] px-6 py-24"
+    >
       <div className="mx-auto max-w-[720px] text-center">
         <p className="eyebrow mb-4">{"// About"}</p>
         <h2 className="font-serif text-[clamp(36px,5vw,64px)] tracking-[-2px] text-[var(--text-heading)]">
@@ -41,9 +46,10 @@ export function BehindTheCanvas() {
         <div className="relative mx-auto aspect-[4/3.5] w-full max-w-[480px]">
           <Polaroid
             id="portrait"
-            src="/images/about-portrait.png"
+            src="/images/about-profile.jpeg"
             caption="Hi, it's me :)"
             rot={-4}
+            layer={30}
             className="absolute left-[21%] top-[8%] w-[58%]"
             active={activePolaroid === "portrait"}
             onActivate={setActivePolaroid}
@@ -55,6 +61,7 @@ export function BehindTheCanvas() {
               src={p.src}
               caption={p.caption}
               rot={p.rot}
+              layer={p.layer}
               className="absolute w-[48%]"
               active={activePolaroid === p.src}
               onActivate={setActivePolaroid}
@@ -72,10 +79,10 @@ export function BehindTheCanvas() {
             get things done more efficiently.
           </p>
           <p className="text-[18px] leading-[1.55] text-[var(--text-body)]">
-            When I&apos;m not designing, I enjoy making coffee, exploring new
-            cafes, and travelling. I&apos;m naturally curious about how people
-            think, and believe great design comes from empathy and a genuine
-            desire to make things work better.
+            When I&apos;m not designing, I enjoy exploring new cafes,
+            resturants, and travelling. I&apos;m naturally curious about how
+            people think, and believe great design comes from empathy and a
+            genuine desire to make things work better.
           </p>
         </div>
       </div>
@@ -88,6 +95,7 @@ function Polaroid({
   src,
   caption,
   rot,
+  layer,
   className,
   active,
   onActivate,
@@ -97,6 +105,7 @@ function Polaroid({
   src: string;
   caption: string;
   rot: number;
+  layer: number;
   className?: string;
   active: boolean;
   onActivate: (id: string) => void;
@@ -110,7 +119,7 @@ function Polaroid({
       tabIndex={0}
       style={{
         transform: `rotate(${rot}deg)`,
-        zIndex: active ? 20 : 0,
+        zIndex: active ? 40 : layer,
         ["--rot" as never]: `${rot}deg`,
         ["--float-duration" as never]: `${6 + Math.abs(rot)}s`,
         ...style,
