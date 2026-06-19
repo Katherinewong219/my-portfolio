@@ -6,17 +6,23 @@ import { useEffect, useState } from "react";
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
 
+  function clearUrlHash() {
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}`,
+    );
+  }
+
   function scrollToSection(id: string) {
+    clearUrlHash();
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    window.requestAnimationFrame(clearUrlHash);
   }
 
   useEffect(() => {
     if (window.location.hash) {
-      window.history.replaceState(
-        null,
-        "",
-        `${window.location.pathname}${window.location.search}`,
-      );
+      clearUrlHash();
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }
 
