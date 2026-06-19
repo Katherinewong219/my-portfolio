@@ -25,7 +25,7 @@ export function BehindTheCanvas() {
   const [activePolaroid, setActivePolaroid] = useState("portrait");
 
   return (
-    <section className="mx-auto w-full max-w-[1273px] px-6 py-24">
+    <section id="about" className="mx-auto w-full max-w-[1273px] scroll-mt-[104px] px-6 py-24">
       <div className="mx-auto max-w-[720px] text-center">
         <p className="eyebrow mb-4">{"// About"}</p>
         <h2 className="font-serif text-[clamp(36px,5vw,64px)] tracking-[-2px] text-[var(--text-heading)]">

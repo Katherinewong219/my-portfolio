@@ -38,10 +38,13 @@ export function WhatIBring() {
       <div className="mx-auto max-w-[720px] text-center">
         <p className="eyebrow mb-4">{"// Values"}</p>
         <h2 className="font-serif text-[clamp(36px,5vw,64px)] tracking-[-2px] text-[var(--text-heading)]">
-          What I bring to the <span className="italic">table</span>
+          What I bring to{" "}
+          <span className="whitespace-nowrap">
+            the <span className="italic">table</span>
+          </span>
         </h2>
         <p className="mt-4 text-[17px] leading-[1.5] text-[var(--text-body)]">
-          Digital experiences that engage users and drive real product impact.
+          Design strengths shaped through fast-moving, product-focused work.
         </p>
       </div>
 

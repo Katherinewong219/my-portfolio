@@ -12,7 +12,7 @@ const ARC_END_PADDING = 4;
 
 export function Hero() {
   return (
-    <section className="relative mx-auto flex h-[420px] w-full max-w-[1273px] flex-col items-center justify-center overflow-hidden px-6 py-10 text-center md:h-[720px] md:py-6">
+    <section className="relative mx-auto -mt-6 flex h-[420px] w-full max-w-[1273px] flex-col items-center justify-center overflow-hidden px-6 py-10 text-center md:-mt-10 md:h-[720px] md:py-6">
       {/* Decorative arc text — slowly rotating SVG */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[min(86vw,360px)] w-[min(86vw,360px)] -translate-x-1/2 -translate-y-1/2 md:h-[623px] md:w-[623px]"
@@ -59,7 +59,7 @@ export function Hero() {
       <FloatingPhoto
         src="/images/hero-2.png"
         alt=""
-        className="absolute right-[5%] top-[7%] h-[98px] w-[72px] md:right-[8%] md:top-[6%] md:h-[216px] md:w-[160px]"
+        className="absolute right-[5%] top-[12%] h-[98px] w-[72px] md:right-[8%] md:top-[12%] md:h-[216px] md:w-[160px]"
         rot={5}
       />
       <FloatingPhoto
