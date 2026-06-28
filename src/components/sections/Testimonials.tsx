@@ -11,7 +11,7 @@ const TESTIMONIALS = [
     quote:
       "Working with Artemis felt like having a co-founder who actually gets design. Fast turnarounds, clear communication, and results that move the needle.",
     name: "Marcus Rivera",
-    role: "CEO, TalentBridge",
+    role: "Product Lead, Energy",
   },
   {
     quote:

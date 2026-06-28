@@ -49,7 +49,7 @@ export function Nav() {
           onClick={() => scrollToSection("work")}
           className="justify-self-start px-2 py-2 text-[14px] text-[var(--text-strong)] transition-colors hover:text-[var(--accent)] sm:px-5"
         >
-          Work
+          Case study
         </button>
         <button
           type="button"

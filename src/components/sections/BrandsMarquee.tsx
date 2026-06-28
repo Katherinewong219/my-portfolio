@@ -4,7 +4,7 @@ const BRANDS = [
   "Sonooi",
   "LaunchPad",
   "radiO",
-  "TalentBridge",
+  "Energy",
   "Beeply",
 ];
 
