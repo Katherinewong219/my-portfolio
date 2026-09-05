@@ -3,7 +3,23 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Dialog } from "@base-ui/react/dialog";
-import { XIcon } from "lucide-react";
+import {
+  BarChart3Icon,
+  CalendarDaysIcon,
+  CheckCircle2Icon,
+  ClipboardCheckIcon,
+  FileTextIcon,
+  FilterIcon,
+  HeartPulseIcon,
+  LightbulbIcon,
+  PawPrintIcon,
+  SearchIcon,
+  SlidersHorizontalIcon,
+  StethoscopeIcon,
+  WorkflowIcon,
+  XIcon,
+  ZapIcon,
+} from "lucide-react";
 import { ArrowRightIcon } from "@/components/icons";
 import { withBasePath } from "@/lib/site-path";
 
@@ -16,6 +32,50 @@ type Work = {
   bg: string;
   caseStudy?: CaseStudy;
 };
+
+type DiagramVariant =
+  | "evidence"
+  | "rules"
+  | "integrations"
+  | "matching"
+  | "schedule"
+  | "operations"
+  | "records"
+  | "comparison"
+  | "booking"
+  | "dashboard"
+  | "timeline"
+  | "guidance";
+
+type HighlightDiagram = {
+  title: string;
+  caption: string;
+  variant: DiagramVariant;
+  image?: DiagramImage;
+};
+
+type DiagramImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+type DiagramIcon =
+  | "barChart"
+  | "calendar"
+  | "check"
+  | "clipboard"
+  | "file"
+  | "filter"
+  | "heart"
+  | "lightbulb"
+  | "paw"
+  | "sliders"
+  | "search"
+  | "stethoscope"
+  | "workflow"
+  | "zap";
 
 type CaseStudy = {
   oneLineSummary: string;
@@ -32,6 +92,7 @@ type CaseStudy = {
     body: string;
     decision: string;
     impact: string;
+    diagram?: HighlightDiagram;
   }[];
   impact: string[];
 };
@@ -41,7 +102,7 @@ const WORKS: Work[] = [
     slug: "ai-compliance-review",
     title: "AI Compliance Review",
     desc: "Designed and scaled an AI compliance review platform that enables marketing teams to self-serve content checks against internal rules and regulatory requirements across multiple workflows and integrations.",
-    img: "/images/work-launchpad.png",
+    img: "/images/Compliance1.png",
     alt: "AI compliance review platform case study preview",
     bg: "rgb(248, 232, 220)",
     caseStudy: {
@@ -89,6 +150,17 @@ const WORKS: Work[] = [
             "I designed a structured review experience that grouped findings into clearer evidence cards, connected issues back to the relevant content, and supported both in-line and side-panel review patterns.",
           impact:
             "This improved clarity across complex compliance review workflows and helped users move from simply seeing a list of issues to understanding the evidence, context, and recommended next steps. It also created a more scalable review pattern that could be reused across different content types and review surfaces.",
+          diagram: {
+            title: "Evidence-led reviews",
+            caption: "Findings are grouped into a guided path from issue to evidence to next step.",
+            variant: "evidence",
+            image: {
+              src: "/images/ai-compliance-evidence-led-reviews.svg",
+              alt: "Compliance rules, reasoning, and action flowing into a risk issue panel",
+              width: 913,
+              height: 279,
+            },
+          },
         },
         {
           title: "The right rules depend on the right context",
@@ -98,6 +170,17 @@ const WORKS: Work[] = [
             "I redesigned the rule-application flow into a questionnaire experience with more flexible question types, editable answers, metadata visibility, and conditional logic.",
           impact:
             "This supported more accurate rule application by giving the system better context before the review. It also gave users more control and visibility over the information driving the review, making the experience feel more transparent and trustworthy.",
+          diagram: {
+            title: "Context-aware rules",
+            caption: "Questionnaire answers shape the active rule set before review starts.",
+            variant: "rules",
+            image: {
+              src: "/images/ai-compliance-context-aware-rules.svg",
+              alt: "Rules with brief, audience, and region context cards",
+              width: 452,
+              height: 280,
+            },
+          },
         },
         {
           title: "Review workflows should meet users where they work",
@@ -107,6 +190,17 @@ const WORKS: Work[] = [
             "I designed integration experiences for common workplace tools, including document editors, design platforms, browser-based workflows, and work-management tools. These flows included entry points, review handoff, source-tracking behaviours, and email/in-app notification patterns.",
           impact:
             "This reduced context switching and helped users move between the review platform and their source content more smoothly. It also made the compliance review workflow easier to adopt because users could access review actions within the tools they already used day to day.",
+          diagram: {
+            title: "Workflow integrations",
+            caption: "Source tools, review handoff, and notifications stay connected.",
+            variant: "integrations",
+            image: {
+              src: "/images/ai-compliance-workflow-integrations.svg",
+              alt: "Workplace apps around a review regulated content action",
+              width: 566,
+              height: 280,
+            },
+          },
         },
         {
           title: "Review work does not end after the first result",
@@ -137,7 +231,7 @@ const WORKS: Work[] = [
     slug: "launchpad",
     title: "Healthcare Workforce Platform",
     desc: "Redesigned key workflows across a healthcare workforce platform to help nurses find suitable shifts faster, while helping managers and HR teams manage scheduling, timesheets, and workforce operations with less manual effort.",
-    img: "/images/work-finflow.jpg",
+    img: "/images/work-uPaged.png",
     alt: "Healthcare workforce platform case study preview",
     bg: "rgb(238, 235, 245)",
     caseStudy: {
@@ -185,6 +279,11 @@ const WORKS: Work[] = [
             "I redesigned the Find Work experience with clearer job cards, stronger filtering, and job-match indicators to help nurses find relevant shifts faster.",
           impact:
             "This accelerated job matching, reduced search effort, and helped nurses make quicker decisions when comparing available shifts.",
+          diagram: {
+            title: "Shift matching",
+            caption: "Filters, match signals, and job cards help nurses compare quickly.",
+            variant: "matching",
+          },
         },
         {
           title: "Managers needed to create shifts without repeating the same steps",
@@ -194,6 +293,11 @@ const WORKS: Work[] = [
             "I simplified the scheduling flow, reduced unnecessary form fields, introduced reusable templates, and supported faster reposting patterns.",
           impact:
             "This reduced scheduling effort and made it easier for managers to create and manage jobs at scale.",
+          diagram: {
+            title: "Reusable scheduling",
+            caption: "Templates and reposting patterns cut repeated shift setup work.",
+            variant: "schedule",
+          },
         },
         {
           title: "HR teams needed clearer timesheet and worker-management workflows",
@@ -203,6 +307,11 @@ const WORKS: Work[] = [
             "I improved dashboard patterns for timesheet review, bulk sign-off, worker preferences, and conditional interactions.",
           impact:
             "This helped HR teams process information faster, reduce manual review effort, and maintain better accuracy across workforce operations.",
+          diagram: {
+            title: "Operations dashboard",
+            caption: "Timesheets, preferences, and bulk sign-off become one scannable workspace.",
+            variant: "operations",
+          },
         },
       ],
       impact: [
@@ -216,7 +325,7 @@ const WORKS: Work[] = [
     slug: "pet-health-app",
     title: "Pet Health App",
     desc: "Designed a mobile app concept that helps pet owners manage health records, track symptoms, compare vet clinics, book appointments, and access care information in one place.",
-    img: "/images/work-healthsync.png",
+    img: "/images/work-pethealth.png",
     alt: "Pet health app case study preview",
     bg: "rgb(220, 233, 245)",
     caseStudy: {
@@ -262,6 +371,11 @@ const WORKS: Work[] = [
             "I designed a pet profile that centralised key information such as medical history, vaccination records, symptoms, and care notes.",
           impact:
             "This helped users access important pet health information faster and reduced the need to search across multiple sources.",
+          diagram: {
+            title: "Pet health hub",
+            caption: "Records, symptoms, reminders, and notes come together around one profile.",
+            variant: "records",
+          },
         },
         {
           title: "Finding the right vet was difficult to compare",
@@ -271,6 +385,11 @@ const WORKS: Work[] = [
             "I designed a clinic discovery and comparison experience that helped users review key information before booking.",
           impact:
             "This made the decision process more transparent and helped users feel more confident when choosing care.",
+          diagram: {
+            title: "Clinic comparison",
+            caption: "Services, availability, trust markers, and price signals become comparable.",
+            variant: "comparison",
+          },
         },
         {
           title: "Booking care needed to feel simple and reassuring",
@@ -280,6 +399,11 @@ const WORKS: Work[] = [
             "I designed a booking flow that helped users find care options, select an appointment, and provide relevant context before the visit.",
           impact:
             "This reduced friction in the appointment process and helped users feel more prepared when seeking care.",
+          diagram: {
+            title: "Reassuring booking",
+            caption: "Care options move into appointment selection and visit context.",
+            variant: "booking",
+          },
         },
       ],
       impact: [
@@ -338,6 +462,11 @@ const WORKS: Work[] = [
             "I designed dashboard patterns that made billing, usage, savings, and renewable energy information easier to scan.",
           impact:
             "This helped users understand their energy behaviour more clearly and made the portal feel more useful day to day.",
+          diagram: {
+            title: "Usage dashboard",
+            caption: "Billing, usage, savings, and renewable signals are easier to scan.",
+            variant: "dashboard",
+          },
         },
         {
           title: "Comparison helps users make smarter decisions",
@@ -347,6 +476,11 @@ const WORKS: Work[] = [
             "I designed side-by-side comparison patterns to help users compare usage and billing data across billing periods, seasons, and selected dates.",
           impact:
             "This made it easier for users to spot changes, understand patterns, and make more informed decisions about their energy consumption.",
+          diagram: {
+            title: "Period comparison",
+            caption: "Side-by-side timelines reveal changes across dates, seasons, and bills.",
+            variant: "timeline",
+          },
         },
         {
           title: "Users needed guidance, not just data",
@@ -356,6 +490,11 @@ const WORKS: Work[] = [
             "I prioritised features such as current and recommended plans, saving tips, billing comparison, notifications, and quick account switching.",
           impact:
             "This helped shift the portal from a passive dashboard into a more actionable decision-making tool.",
+          diagram: {
+            title: "Guided next steps",
+            caption: "Plans, alerts, and saving tips turn raw data into practical actions.",
+            variant: "guidance",
+          },
         },
         {
           title: "The MVP needed to balance user value and delivery effort",
@@ -641,6 +780,11 @@ function CaseStudyContent({ caseStudy }: { caseStudy: CaseStudy }) {
                   </p>
                 </div>
               </div>
+              {insight.diagram ? (
+                <div className="mt-8 flex justify-center">
+                  <ProductDiagram diagram={insight.diagram} />
+                </div>
+              ) : null}
             </article>
           ))}
         </div>
@@ -660,6 +804,276 @@ function CaseStudyContent({ caseStudy }: { caseStudy: CaseStudy }) {
         </div>
       </section>
     </div>
+  );
+}
+
+function ProductDiagram({ diagram }: { diagram: HighlightDiagram }) {
+  if (diagram.image) {
+    return (
+      <aside className="w-full">
+        <div className="flex w-full justify-center overflow-hidden">
+          <Image
+            src={withBasePath(diagram.image.src)}
+            alt={diagram.image.alt}
+            width={diagram.image.width}
+            height={diagram.image.height}
+            sizes={`${diagram.image.width}px`}
+            className="h-auto max-w-full rounded-[14px]"
+          />
+        </div>
+      </aside>
+    );
+  }
+
+  return (
+    <aside className="w-full text-[var(--text-strong)]">
+      <div className="relative min-h-[260px] overflow-hidden p-1 sm:min-h-[300px]">
+        <DiagramArtwork variant={diagram.variant} />
+      </div>
+    </aside>
+  );
+}
+
+function renderDiagramIcon(icon: DiagramIcon, className: string) {
+  const props = { className, strokeWidth: 1.8 };
+
+  switch (icon) {
+    case "barChart":
+      return <BarChart3Icon {...props} />;
+    case "calendar":
+      return <CalendarDaysIcon {...props} />;
+    case "check":
+      return <CheckCircle2Icon {...props} />;
+    case "clipboard":
+      return <ClipboardCheckIcon {...props} />;
+    case "filter":
+      return <FilterIcon {...props} />;
+    case "heart":
+      return <HeartPulseIcon {...props} />;
+    case "lightbulb":
+      return <LightbulbIcon {...props} />;
+    case "paw":
+      return <PawPrintIcon {...props} />;
+    case "search":
+      return <SearchIcon {...props} />;
+    case "sliders":
+      return <SlidersHorizontalIcon {...props} />;
+    case "stethoscope":
+      return <StethoscopeIcon {...props} />;
+    case "workflow":
+      return <WorkflowIcon {...props} />;
+    case "zap":
+      return <ZapIcon {...props} />;
+    case "file":
+    default:
+      return <FileTextIcon {...props} />;
+  }
+}
+
+function DiagramArtwork({ variant }: { variant: DiagramVariant }) {
+  if (variant === "matching") {
+    return <Pipeline labels={["Filter", "Match", "Apply"]} icons={["filter", "search", "check"]} />;
+  }
+
+  if (variant === "schedule") {
+    return (
+      <div className="grid h-full min-h-[220px] grid-cols-3 gap-3">
+        {["Mon", "Tue", "Wed"].map((day, index) => (
+          <div key={day} className="rounded-[12px] bg-white/70 p-3">
+            <p className="flex items-center gap-1.5 font-mono text-[11px] text-[var(--text-body)]">
+              {renderDiagramIcon("calendar", "size-3")}
+              {day}
+            </p>
+            <div className={`mt-5 h-20 rounded-[8px] ${index === 1 ? "bg-[var(--accent)]" : "bg-[var(--highlight)]"}`} />
+            <div className="mt-3 h-10 rounded-[8px] bg-[rgba(0,22,102,0.08)]" />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (variant === "operations") {
+    return <Bars labels={["Review", "Sign-off", "Payroll"]} />;
+  }
+
+  if (variant === "records") {
+    return (
+      <div className="grid h-full min-h-[220px] grid-cols-[120px_1fr] gap-5">
+        <div className="rounded-[14px] bg-[var(--accent-soft)] p-4 text-[var(--text-heading)]">
+          <div className="mx-auto mt-3 flex size-14 items-center justify-center rounded-full bg-white">
+            {renderDiagramIcon("paw", "size-7 text-[var(--accent)]")}
+          </div>
+          <div className="mt-7 h-2 rounded-full bg-[rgba(0,22,102,0.16)]" />
+          <div className="mt-3 h-2 w-2/3 rounded-full bg-[rgba(0,22,102,0.1)]" />
+        </div>
+        <MiniStack labels={["Vaccines", "Symptoms", "Notes"]} icon="heart" />
+      </div>
+    );
+  }
+
+  if (variant === "comparison") {
+    return <Comparison labels={["Clinic A", "Clinic B"]} />;
+  }
+
+  if (variant === "booking") {
+    return <Pipeline labels={["Care", "Time", "Confirm"]} icons={["stethoscope", "calendar", "check"]} />;
+  }
+
+  if (variant === "dashboard") {
+    return (
+      <div className="grid h-full min-h-[220px] grid-cols-[1.1fr_0.9fr] gap-4">
+        <div className="rounded-[12px] bg-white/70 p-4">
+          <div className="flex h-28 items-center justify-center rounded-[10px] bg-[var(--highlight)]">
+            {renderDiagramIcon("zap", "size-7 text-[var(--text-heading)]")}
+          </div>
+          <div className="mt-4 grid grid-cols-3 gap-2">
+            <span className="h-8 rounded-[6px] bg-[var(--accent)]" />
+            <span className="h-8 rounded-[6px] bg-[rgba(0,22,102,0.08)]" />
+            <span className="h-8 rounded-[6px] bg-[rgba(0,22,102,0.08)]" />
+          </div>
+        </div>
+        <Bars labels={["Use", "Cost", "Solar"]} compact />
+      </div>
+    );
+  }
+
+  if (variant === "timeline") {
+    return <Comparison labels={["Last bill", "This bill"]} />;
+  }
+
+  if (variant === "guidance") {
+    return <Pipeline labels={["Insight", "Tip", "Action"]} icons={["barChart", "lightbulb", "check"]} />;
+  }
+
+  return (
+    <div className="grid h-full min-h-[220px] items-center gap-5 md:grid-cols-[1fr_84px_1fr]">
+      <MiniStack labels={["Issue", "Evidence", "Action"]} icon="check" />
+      <CleanFlowArrow />
+      <div className="rounded-[10px] bg-[var(--accent-soft)] p-3">
+        <div className="h-3 rounded-full bg-[rgba(0,22,102,0.18)]" />
+        <div className="mt-3 flex h-16 items-center justify-center rounded-[8px] bg-white/70">
+          {renderDiagramIcon("file", "size-7 text-[var(--accent)]")}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MiniStack({
+  labels,
+  icon = "file",
+  gold = false,
+}: {
+  labels: string[];
+  icon?: DiagramIcon;
+  gold?: boolean;
+}) {
+  return (
+    <div className="grid gap-2">
+      {labels.map((label, index) => (
+        <div
+          key={label}
+          className={`flex items-center gap-3 rounded-[10px] px-4 py-3 text-[14px] sm:text-[18px] ${
+            gold && index === 1
+              ? "bg-[var(--accent-soft)] text-[var(--text-heading)]"
+              : "bg-white/70 text-[var(--text-body)]"
+          }`}
+        >
+          {renderDiagramIcon(icon, "size-4 shrink-0 text-[var(--accent)]")}
+          {label}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Connector() {
+  return (
+    <div className="h-px w-8 bg-[rgba(0,22,102,0.18)] before:block before:size-2 before:-translate-y-[3px] before:translate-x-7 before:rotate-45 before:border-r before:border-t before:border-[rgba(0,22,102,0.2)]" />
+  );
+}
+
+function Pipeline({ labels, icons }: { labels: string[]; icons: DiagramIcon[] }) {
+  return (
+    <div className="flex h-full min-h-[220px] items-center justify-between gap-2">
+      {labels.map((label, index) => (
+        <div key={label} className="flex flex-1 items-center gap-2">
+          <div className="flex h-36 flex-1 flex-col justify-between rounded-[12px] bg-white/70 p-4">
+            <span className="flex size-10 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent)]">
+              {renderDiagramIcon(icons[index] ?? "check", "size-5")}
+            </span>
+            <span className="text-[14px] text-[var(--text-body)]">{label}</span>
+          </div>
+          {index < labels.length - 1 ? <Connector /> : null}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Bars({ labels, compact = false }: { labels: string[]; compact?: boolean }) {
+  return (
+    <div className="flex h-full items-end gap-3 rounded-[12px] bg-white/70 p-4">
+      {labels.map((label, index) => (
+        <div key={label} className="flex flex-1 flex-col items-center gap-2">
+          <div
+            className={`w-full rounded-t-[7px] ${index === 1 ? "bg-[var(--accent)]" : "bg-[var(--highlight)]"}`}
+            style={{ height: compact ? `${54 + index * 18}px` : `${44 + index * 28}px` }}
+          />
+          <span className="text-[11px] text-[var(--text-body)]">{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Comparison({ labels }: { labels: string[] }) {
+  return (
+    <div className="grid h-full min-h-[220px] grid-cols-2 gap-4">
+      {labels.map((label, index) => (
+        <div key={label} className="rounded-[12px] bg-white/70 p-4">
+          <p className="flex items-center gap-2 text-[14px] text-[var(--text-body)]">
+            {renderDiagramIcon("search", "size-4")}
+            {label}
+          </p>
+          <div className="mt-6 h-2 rounded-full bg-[rgba(0,22,102,0.08)]">
+            <div
+              className="h-full rounded-full bg-[var(--accent)]"
+              style={{ width: index === 0 ? "58%" : "78%" }}
+            />
+          </div>
+          <div className="mt-7 grid gap-3">
+            <span className="h-12 rounded-[8px] bg-[var(--highlight)]" />
+            <span className="h-12 rounded-[8px] bg-[rgba(0,22,102,0.08)]" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function CleanFlowArrow() {
+  return (
+    <svg
+      className="mx-auto hidden h-20 w-20 text-[rgba(0,22,102,0.28)] md:block"
+      viewBox="0 0 80 80"
+      fill="none"
+      aria-hidden
+    >
+      <path
+        d="M12 40H62"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M48 24L64 40L48 56"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }
 
